@@ -266,6 +266,7 @@ void genetic::report() {
 
         //Copy initial tour of cities
         originalElite = p->copyTours(t);
+        bestElite = p->copyTours(t);
 
         firstIteration = false;
     } else {
@@ -276,6 +277,7 @@ void genetic::report() {
         if (updateElite) {
             std::cout << "NEW ELITE FOUND:" << std::endl;
             std::cout << "Distance: " << std::to_string(fitness) << std::endl;
+            bestElite = p->copyTours(p->getTours()); //Update bestElite vector to new best elite
             updateElite = false;
         } else {
             std::cout << "Elite distance: " << std::to_string(fitness) << std::endl;
@@ -317,7 +319,7 @@ void genetic::reportResults(vector<tour*> originalElite) {
     std::cout << "(";
 
     //Get current tours in population
-    vector<tour*> t = popTours;
+    vector<tour*> t = bestElite;
 
     for (int i = 0; i < (int) t.size() - 1; i++) {
         std::cout << t.front()->getCities().at(i)->getName() << "->";

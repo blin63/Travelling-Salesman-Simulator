@@ -29,6 +29,7 @@ private:
     population* p = new population(); //For initial population (iteration 1)
     vector<tour*> popTours; //For next generation populations (iteration 2+)
     vector<tour*> originalElite; //Retain master list of population
+    vector<tour*> bestElite; //Retain the best elite population found so far
 public:
     vector<city*> createCityMasterList(vector<city*> masterList);
     tour* createTour(vector<city*> masterList);
